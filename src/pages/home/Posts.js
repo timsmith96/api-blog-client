@@ -17,8 +17,11 @@ const Posts = () => {
   console.log(posts);
 
   return (
-    <div>
-      <h1 className={styles.title}>Blog posts</h1>
+    <div className={styles.container}>
+      <div className={styles.title}>
+        {" "}
+        <h1>Blog posts</h1>
+      </div>
       <div className={styles.posts}>
         {posts.map((post) => (
           <Post

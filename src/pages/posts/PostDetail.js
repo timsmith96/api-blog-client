@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styles from "./PostDetail.module.css";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import backicon from "../../assets/icons/back.svg";
+import nl2br from "react-nl2br";
+import { DateTime } from "luxon";
 
 const PostDetail = () => {
   const { id } = useParams();
@@ -17,18 +20,29 @@ const PostDetail = () => {
     setLoading(false);
   }
 
-  const { title, user, comments } = post;
+  const { title, user, comments, text, createdAt } = post;
 
   if (loading) {
     return <h2>loading</h2>;
   }
   return (
     <div className={styles.container}>
-      <h1>{title}</h1>
-      <h1>{user.username}</h1>
-      {comments.map((comment) => (
-        <h1 key={comment.id}>{comment.text}</h1>
-      ))}
+      <div className={styles.header}>
+        <Link to="/">
+          {" "}
+          <img src={backicon} alt="back icon. Click to go back." /> Back
+        </Link>
+        <div>
+          <p className={styles.category}>{user.username}</p>
+          <h1>{title}</h1>
+        </div>
+      </div>
+      <div className={styles.post_text}>
+        <em id={styles.date}>
+          {DateTime.fromISO(createdAt).toFormat("MMM d, y")}
+        </em>
+        <p>{nl2br(text)}</p>
+      </div>
     </div>
   );
 };

@@ -1,17 +1,20 @@
 import { DateTime } from "luxon";
 import styles from "./Post.module.css";
 import { Link } from "react-router-dom";
+import image from "../../assets/images/elephant.jpg";
 
 const Post = ({ title, author, date, id }) => {
   return (
-    <div className={styles.post}>
-      <h2>{title}</h2>
-      <h3>{author}</h3>
+    <figure className={styles.post}>
       <Link to={`/posts/${id}`} title={title} author={author}>
-        View post
+        <img src={image} alt="zebra" />
+        <figcaption>
+          <h3>{title}</h3>
+          <p>{author}</p>
+          <p>{DateTime.fromISO(date).toLocaleString(DateTime.DATETIME_MED)}</p>
+        </figcaption>
       </Link>
-      <h4>{DateTime.fromISO(date).toLocaleString(DateTime.DATETIME_MED)}</h4>
-    </div>
+    </figure>
   );
 };
 

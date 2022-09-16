@@ -1,26 +1,91 @@
-.navbar {
-  width: 100%;
-  background: #f1f5f9;
-  padding: 20px 10px;
-  box-sizing: border-box;
-}
-.navbar ul {
+.nav {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
   display: flex;
-  margin: 0 auto;
-  max-width: 960px;
   align-items: center;
+  position: relative;
 }
-.title {
+
+.nav h4 {
+  font-size: 1.2rem;
+  font-family: "Bebas Neue", cursive;
+  letter-spacing: 1.7px;
+}
+
+.navcenter {
+  display: flex;
+  align-items: center;
   margin: 0 auto;
-  font-weight: bold;
-  letter-spacing: 1px;
-  font-size: 1.2em;
+  gap: 2rem;
 }
-.navbar button,
-.navbar a {
-  margin-left: 16px;
+
+.nav a {
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+  gap: 5px;
 }
-.navbar a {
-  color: #333;
-  text-decoration: none;
+
+.navbtns {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.navbtns button {
+  padding: 3px 15px;
+  font-family: Roboto, sans-serif;
+  border-radius: 0.25rem;
+  border: none;
+}
+
+.navbtns .newsletterbtn {
+  background-color: rgb(43, 43, 43);
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.navbtns .membershipbtn {
+  background-color: rgb(252, 62, 41);
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.verticalline {
+  border-left: 1px solid grey;
+  height: 1.7rem;
+}
+
+/* .horizontalline {
+  border-bottom: 1px solid #cbd5e1;
+  max-width: 1080px;
+  padding: 0 1rem;
+  margin: 0 auto;
+} */
+
+.nav::after {
+  content: "";
+  background-color: #cbd5e1;
+  height: 1px;
+  display: block;
+  position: absolute;
+  bottom: -10px;
+  left: 1.5rem;
+  right: 1.5rem;
+}
+
+#magnify {
+  background-color: #fff;
+  border: 1px solid #cbd5e1;
+  padding: 0.5rem;
+}
+
+@media (max-width: 1170px) {
+  .nav {
+    padding: 0.6rem 1rem;
+    justify-content: space-between;
+  }
+  .navcenter {
+    display: none;
+  }
 }
