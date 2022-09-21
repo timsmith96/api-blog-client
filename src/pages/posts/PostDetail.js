@@ -4,21 +4,36 @@ import { useParams, Link } from "react-router-dom";
 import backicon from "../../assets/icons/back.svg";
 import nl2br from "react-nl2br";
 import { DateTime } from "luxon";
+import Comment from "./Comment";
 
 const PostDetail = () => {
   const { id } = useParams();
   const [post, setPost] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [commentText, setcommentText] = useState();
   useEffect(() => {
     requestPost();
   }, []);
 
   async function requestPost() {
-    const res = await fetch(`http://localhost:3000/posts/${id}`);
+    const res = await fetch(`http://localhost:4000/posts/${id}`);
     const json = await res.json();
     setPost(json);
     setLoading(false);
   }
+
+  const handleSubmit = async () => {
+    await fetch(`http://localhost:4000/comments/${id}`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        text: commentText,
+      }),
+    });
+  };
 
   const { title, user, comments, text, createdAt } = post;
 
@@ -42,6 +57,28 @@ const PostDetail = () => {
           {DateTime.fromISO(createdAt).toFormat("MMM d, y")}
         </em>
         <p>{nl2br(text)}</p>
+      </div>
+      <div className={styles.comments}>
+        <h2>Comments</h2>
+        <ul className="">
+          {comments.map((comment) => (
+            <Comment
+              key={comment._id}
+              text={comment.text}
+              createdAt={comment.createdAt}
+            />
+          ))}
+        </ul>
+        <form onSubmit={handleSubmit}>
+          <textarea
+            name="comment"
+            id="comment"
+            cols="40"
+            rows="5"
+            onChange={(e) => setcommentText(e.target.value)}
+          ></textarea>
+          <button type="submit">Add comment</button>
+        </form>
       </div>
     </div>
   );

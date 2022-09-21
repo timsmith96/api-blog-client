@@ -9,12 +9,10 @@ const Posts = () => {
   }, []);
 
   async function requestPosts() {
-    const res = await fetch("http://localhost:3000/posts");
+    const res = await fetch("http://localhost:4000/posts");
     const json = await res.json();
     setPosts(json);
   }
-
-  console.log(posts);
 
   return (
     <div className={styles.container}>
@@ -23,15 +21,17 @@ const Posts = () => {
         <h1>Blog posts</h1>
       </div>
       <div className={styles.posts}>
-        {posts.map((post) => (
-          <Post
-            title={post.title}
-            author={post.user.username}
-            date={post.createdAt}
-            key={post._id}
-            id={post._id}
-          />
-        ))}
+        {posts
+          .filter((post) => post.display)
+          .map((post) => (
+            <Post
+              title={post.title}
+              author={post.user.username}
+              date={post.createdAt}
+              key={post._id}
+              id={post._id}
+            />
+          ))}
       </div>
     </div>
   );

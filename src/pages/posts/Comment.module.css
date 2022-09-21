@@ -1,0 +1,9 @@
+.comment {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 1rem;
+}

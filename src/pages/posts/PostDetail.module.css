@@ -3,7 +3,8 @@
   margin: 100px auto;
 }
 
-.container h1 {
+.container h1,
+h2 {
   font-family: "Bebas Neue", cursive;
   font-size: 5.25rem;
   letter-spacing: 2px;
@@ -44,6 +45,40 @@
   padding-left: 8.8rem;
   padding-right: 8.8rem;
   color: rgb(51, 51, 51);
+}
+
+.comments {
+  padding-left: 8.8rem;
+  padding-right: 8.8rem;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.comments button {
+  padding: 1rem 2rem;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 5px;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.3rem;
+  margin-top: 10px;
+}
+
+.comments button:hover {
+  cursor: pointer;
+  background-color: rgb(51, 51, 51);
+  color: #fff;
+}
+
+.comments textarea {
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+.comments form {
+  display: flex;
+  flex-direction: column;
 }
 
 #date {
