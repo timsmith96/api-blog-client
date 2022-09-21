@@ -36,6 +36,7 @@ const PostDetail = () => {
         text: commentText,
       }),
     });
+    console.log("i should be reloading");
     window.location.reload();
   };
 
