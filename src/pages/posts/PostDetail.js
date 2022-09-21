@@ -16,7 +16,9 @@ const PostDetail = () => {
   }, []);
 
   async function requestPost() {
-    const res = await fetch(`https://young-mesa-82569.herokuapp.com/posts/${id}`);
+    const res = await fetch(
+      `https://young-mesa-82569.herokuapp.com/posts/${id}`
+    );
     const json = await res.json();
     setPost(json);
     setLoading(false);
@@ -33,6 +35,7 @@ const PostDetail = () => {
         text: commentText,
       }),
     });
+    window.location.reload();
   };
 
   const { title, user, comments, text, createdAt } = post;
