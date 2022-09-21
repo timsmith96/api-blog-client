@@ -25,7 +25,7 @@ const PostDetail = () => {
   }
 
   const handleSubmit = async () => {
-    await fetch(`https://young-mesa-82569.herokuapp.com/${id}`, {
+    await fetch(`https://young-mesa-82569.herokuapp.com/comments/${id}`, {
       method: "POST",
       headers: {
         Accept: "application/json",
