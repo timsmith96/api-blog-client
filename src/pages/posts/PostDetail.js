@@ -24,7 +24,8 @@ const PostDetail = () => {
     setLoading(false);
   }
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     await fetch(`https://young-mesa-82569.herokuapp.com/comments/${id}`, {
       method: "POST",
       headers: {
