@@ -16,9 +16,7 @@ const PostDetail = () => {
   }, []);
 
   async function requestPost() {
-    const res = await fetch(
-      `https://young-mesa-82569.herokuapp.com/posts/${id}`
-    );
+    const res = await fetch(`https://api-blog-api.herokuapp.com/posts/${id}`);
     const json = await res.json();
     setPost(json);
     setLoading(false);
@@ -26,7 +24,7 @@ const PostDetail = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch(`https://young-mesa-82569.herokuapp.com/comments/${id}`, {
+    await fetch(`https://api-blog-api.herokuapp.com/comments/${id}`, {
       method: "POST",
       headers: {
         Accept: "application/json",
